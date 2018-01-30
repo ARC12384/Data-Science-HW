@@ -1,0 +1,127 @@
+
+
+**submission notes: not completely done 
+
+
+'Instructions: Create a script that will loop through each year of stock data and grab the total
+    'amount of volume each stock had over the year
+
+'display ticker signal to coincide with the total volume
+    
+'make code able to be moved to stock excel as is
+
+'expected references from past excercises:
+    'credit card checkever activity inlcuded tallying total purchase for each card and including it
+    'in a new column, had 1 sheet
+    
+    'Wells fargo part 1 unsolved included 1 sheet for each states deposits labeled in the sheet tab name
+    'multi year data combined to 1 each states sheet; SOLVED shows adding net new column for state in each
+    'sheet and extracted it from tab sheet name to display in new new column, example displays working
+    'with multiple sheets within work sheet
+    
+    'Wells fargo part 2 solved displays activity where info from multiple sheets is grand
+    'totalled on new sheet by year
+    
+    'in this excercise need column J to grand total stock volume of column G in 7 total tabs A B C D E F P
+    
+    'in this excercise need column I to show the appropriate ticker symbol for the total volume of that stock
+    'displayed in column J
+ 
+    ''****above notes types before getting started...after starting I'm here:
+
+Sub test3()
+'variable declarations with names of column headers
+Dim ticker As String
+Dim volume As Long
+
+
+    'variable declaration of net new column header of totalstockvolume per ticker in column J with initial
+    'value for place holding as 0
+    Dim totalstockvolume As Long
+    totalstockvolume = 0
+    
+    'variable declaration of net new column head of tickersymbol in column I with initial value for place holding
+    'as 0
+    Dim tickerletter As String
+    tickerletter = 0
+    
+    'define worksheets
+    Dim ws As Worksheet
+    
+    '''this is where I can't seem to figure out how to tell it
+      '1.I need it to look at the data in column A starting on row 2 and continuing until the end of data
+           'in that column
+      '2. I need it to add column G starting on row 2 and continuing until the end of data in that column
+      '3. I need it to do the same thing on all 7 worksheets
+      '4. I need it to sum
+    
+    ''''' I pasted in and changed some code below from some of the past excercises thinking I would
+        'follow the logic to understand the majority of the mapping on the new excercise, leaving it
+        'below for now until we talk
+    
+'won't allow saving with 2 longs?
+
+    
+    
+  
+For i = 2 To rowcount
+Dim rowcount As Long
+rowcount = Cells(Rows.Count, "A").End(xlUp).Row
+
+
+
+  
+            '''should this be (1,(i+1) instead? on the stock one?  (i+1, 1) is from original credit card example but it had values going down the column. (I still can't get these numbered columns straight!!!'
+            ''does this part add up the ticker letter or the volume??? I think that is what screwed me up trying to interpret from the CC example excercise
+    ' Check if we are still within the same ticker letter, if it is not...
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+
+
+      ' Set the tickerletter
+      tickerletter = Cells(i, 1).Value
+
+
+      ' Add to the ticker
+      Brand_Total = Brand_Total + Cells(i, 3).Value
+      
+
+      ' Print the ticker symbol in the Summary Table
+      Range("G" & Summary_Table_Row).Value = Brand_Name
+      
+
+      ' Print the Brand Amount to the Summary Table
+      Range("H" & Summary_Table_Row).Value = Brand_Total
+      
+
+      ' Add one to the summary table row
+      Summary_Table_Row = Summary_Table_Row + 1
+      
+      
+      ' Reset the Brand Total
+      Brand_Total = 0
+
+    ' If the cell immediately following a row is the same brand...
+    Else
+
+      ' Add to the Brand Total
+      totalstockvolume = totalstockvolume + Cells(10, 2).Value
+
+    End If
+
+  Next i
+
+End Sub
+
+
+
+    
+    
+
+   
+
+
+
+
+
+
+
